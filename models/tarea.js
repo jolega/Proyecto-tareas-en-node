@@ -2,9 +2,9 @@ const {v4: uuiv4} = require('uuid')
 
 class Tarea {
    
-    id= '';
-    desc ='';
-    completadoEn =null;
+    id              = '';
+    desc            = '';
+    completadoEn    = null;
 
     constructor (desc) {
         
@@ -12,6 +12,8 @@ class Tarea {
           this.desc = desc 
           this.completadoEn = null;
     }
+
+    
 
 }
 
