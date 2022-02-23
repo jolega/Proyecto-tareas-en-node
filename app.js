@@ -1,6 +1,5 @@
 require('colors');
-const { guardarDb } = require('./helpers/guardarArchivo.js');
-//const {mostrarMenu,pausa } = require ('./helpers/mensajes.js')
+const { guardarDb, leerDB } = require('./helpers/guardarArchivo.js');
 const {inquirerMenu, 
         pausa,
         leerInput
@@ -12,11 +11,17 @@ console.clear();
 
 const main = async () => {
 
-    console.log('Hola mundo');
-
     let opt = ''
     const tareas = new Tareas();
+    const tareasDB=leerDB();
 
+    if (tareasDB){
+        tareas.cargaTareasFromArray(tareasDB);
+        console.log(tareasDB);
+        await pausa();
+    }
+
+    
     do{
         opt= await inquirerMenu(); // await espera a que se cumppla 
        console.log(`${opt}` + "\n ");
@@ -42,14 +47,7 @@ const main = async () => {
            case '6':
            case '7':
        }
- 
-
-      // const tarea = new Tarea('Comprar comida')
-      // console.log(tarea); 
-
-      // tareas._listado[tarea.id]= tarea;
-      // console.log(tareas); 
-      
+     
     guardarDb(tareas._listadoArr);
      await pausa();
 
