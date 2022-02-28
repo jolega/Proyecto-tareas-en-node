@@ -17,7 +17,6 @@ const main = async () => {
 
     if (tareasDB){
         tareas.cargaTareasFromArray(tareasDB);
-        console.log(tareasDB);
         await pausa();
     }
 
@@ -33,10 +32,8 @@ const main = async () => {
            tareas.crearTarea(desc);
            break;
            }   
-           case '2':{
-
-           // console.log(tareas._listado); 
-            console.log(tareas._listadoArr);
+           case '2':{            
+           tareas.listadoCompleto();
             break;
 
            }
