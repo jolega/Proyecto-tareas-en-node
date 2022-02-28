@@ -39,17 +39,33 @@ class Tareas {
     }
 
     listadoCompleto () {
-        const listadoCompleto = []; 
-        let index = 1; 
+
+        console.log();
+        this._listadoArr.forEach((tarea, i) => {
         
-        this._listadoArr.forEach(({ desc, completadoEn}) => {
-        const completado = (completadoEn === null ) ?  'Pendiente' : 'Completada' ;
-        listadoCompleto.push (`${index}. ${desc} :: ${completado} `);
-        index++;
+        const idx = ` ${i + 1}`.green 
+        const { desc, completadoEn} = tarea
+        const estado = ( completadoEn ) ? 'Completada'.green :'Pendiente'.red;
+         console.log(`${idx}. ${desc} :: ${estado} `);
 
         });
+    }
 
-        console.log(listadoCompleto);
+    listarPendientesCompletadas (completadas = true ){
+
+        console.log();
+        this._listadoArr.forEach((tarea, i) => {
+        
+        const idx = ` ${i + 1}`.green 
+        const { desc, completadoEn} = tarea
+        const estado = ( completadoEn ) ? 'Completada'.green :'Pendiente'.red;
+        
+        const imprimir = ( completadas && completadoEn) 
+                       ? console.log(`${idx}. ${desc} :: ${estado} `)
+                       : (!completadas && !completadoEn) 
+                            ?  console.log(`${idx}. ${desc} :: ${estado} `)      
+                            : null                 
+        });
     }
 
 }

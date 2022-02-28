@@ -23,7 +23,7 @@ const main = async () => {
     
     do{
         opt= await inquirerMenu(); // await espera a que se cumppla 
-       console.log(`${opt}` + "\n ");
+      // console.log(`${opt}` + "\n ");
 
 
        switch(opt){
@@ -36,18 +36,23 @@ const main = async () => {
            tareas.listadoCompleto();
             break;
 
+           }         
+           case '3':{
+           tareas.listarPendientesCompletadas(true);
+           break;
            }
-               
-           case '3':
-           case '4':
+           case '4':{
+            tareas.listarPendientesCompletadas(false);
+            break;
+            }
            case '5':
            case '6':
            case '7':
        }
      
     guardarDb(tareas._listadoArr);
+    console.log();
      await pausa();
-
     }while(opt !=='0')
 
 
